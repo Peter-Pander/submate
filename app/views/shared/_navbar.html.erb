@@ -6,21 +6,17 @@
       <%= link_to "Menu", "#", class: "nav-link" %>
       <%= link_to "Our Fleet", "/submarines", class: "nav-link" %>
     </div>
-
     <!-- Centered Logo and Text -->
     <div class="logo-container">
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "sublogo.png", class: "nav-logo" %>
       <% end %>
-
       <p class="explore-text fw-bold">Explore our submarines</p>
     </div>
-
     <!-- Right Section (Rent a Sub, Contact, Profile) -->
     <div class="right-items">
       <%= link_to "Rent a Sub", "/submarines", class: "nav-link" %>
       <%= link_to "Contact", "#", class: "nav-link" %>
-
       <!-- User Dropdown -->
       <% if user_signed_in? %>
         <div class="dropdown">
@@ -32,7 +28,7 @@
             <span class="user-name"><%= current_user.name %></span>
           <% end %>
           <div class="dropdown-menu">
-            <%= link_to "Profile", "#", class: "dropdown-item" %>
+            <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
             <%= link_to "New submarine", new_submarine_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
