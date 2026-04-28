@@ -192,7 +192,7 @@ bookings = [
   {
     user: users.find_by!(name: "Jakub"),
     submarine: submarines.find_by!(name: "Poseidon"),
-    status: :cancelled,
+    status: :rejected,
     start_datetime: Time.now + 5.days,
     end_date: Time.now + 6.days
   },
