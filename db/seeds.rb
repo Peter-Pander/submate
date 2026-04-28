@@ -154,13 +154,19 @@ submarines = [
 ]
 
 submarines.each do |submarine_data|
-  submarine = Submarine.create!(submarine_data)
+  submarine = Submarine.new(submarine_data)
   photo_dir = Dir[Rails.root.join("db/Seed Images/#{submarine_data[:image_tag]}/*")]
+
   photo_dir.each do |item|
-    photo = File.new(item)
-    submarine.photos.attach(io: photo, filename: File.basename(item), content_type: "image/#{File.extname(item).delete('.')}")
+    photo = File.open(item)
+    submarine.photos.attach(
+      io: photo,
+      filename: File.basename(item),
+      content_type: "image/#{File.extname(item).delete('.')}"
+    )
   end
-  submarine.save
+
+  submarine.save!
   puts "Created submarine: #{submarine_data[:name]}"  # Confirm submarine creation
 end
 
